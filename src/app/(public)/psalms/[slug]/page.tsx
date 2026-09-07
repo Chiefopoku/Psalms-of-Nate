@@ -17,8 +17,8 @@ export default async function PsalmDetailPage({ params }: { params: Promise<{ sl
       <PsalmPreview psalm={psalm} />
       <PsalmMetadata psalm={psalm} />
       <PsalmDownloads psalm={psalm} />
-      <MailingListSignup />
       <PsalmStreamingLinks psalm={psalm} />
+      <MailingListSignup />
     </Container>
   );
 }

@@ -5,6 +5,7 @@ export const mockPsalms: Psalm[] = [
   {
     id: "psalm-001",
     slug: "madesre-my-plea",
+    streamingUrl: "https://www.youtube.com/watch?v=vudW7fytO7E",
     title: "Madesrɛ (My Plea)",
     subtitle: "A heartfelt Ghanaian sacred choral prayer composed by Dr. Nathanael Adjei",
     status: "released",
@@ -19,6 +20,7 @@ export const mockPsalms: Psalm[] = [
   {
     id: "psalm-002",
     slug: "heaven-akwantuo",
+    streamingUrl: "https://www.youtube.com/watch?v=5g5fSMwZWsg",
     title: "Heaven Akwantuo",
     subtitle: "The Heavenly Journey. A triumphant choral meditation on eternity",
     status: "released",
@@ -33,6 +35,7 @@ export const mockPsalms: Psalm[] = [
   {
     id: "psalm-003",
     slug: "gye-me-kra",
+    streamingUrl: "https://www.youtube.com/watch?v=23casVU-_-g",
     title: "Gye Me Kra (San Bra Awrade)",
     subtitle: "Redeem My Soul (Return, O Lord). An anthem of deliverance and hope",
     status: "released",
@@ -47,6 +50,7 @@ export const mockPsalms: Psalm[] = [
   {
     id: "psalm-004",
     slug: "maseda-ni",
+    streamingUrl: "https://www.youtube.com/watch?v=3glppzRgg_U",
     title: "Maseda Ni",
     subtitle: "This Is My Thanksgiving. A vibrant song of praise and gratitude",
     status: "released",
@@ -61,6 +65,7 @@ export const mockPsalms: Psalm[] = [
   {
     id: "psalm-005",
     slug: "we-praise-thee",
+    streamingUrl: "https://www.youtube.com/watch?v=YxqmwPWi2jM",
     title: "We Praise Thee",
     subtitle: "Sacred Choral Hymn of Adoration and Worship",
     status: "released",
@@ -75,6 +80,7 @@ export const mockPsalms: Psalm[] = [
   {
     id: "psalm-006",
     slug: "yesu-2",
+    streamingUrl: "https://www.youtube.com/watch?v=4vghhpz4iTI",
     title: "Mɛsɛ Yesu",
     subtitle: "I Would Be Like Jesus (SDAH 311). A Psalms of Nate live recording featuring Musikteers Ensemble",
     status: "released",
@@ -89,6 +95,7 @@ export const mockPsalms: Psalm[] = [
   {
     id: "psalm-007",
     slug: "nkunimdie-nnwom",
+    streamingUrl: "https://www.youtube.com/watch?v=D6wLHBNADlU",
     title: "Nkunimdie Nnwom",
     subtitle: "Songs of Victory. Highlife Medley for Choir & Orchestra",
     status: "released",
@@ -103,6 +110,7 @@ export const mockPsalms: Psalm[] = [
   {
     id: "psalm-008",
     slug: "yewo-nyame",
+    streamingUrl: "https://www.youtube.com/watch?v=w6qOW8JshIo",
     title: "Yɛwɔ Nyame",
     subtitle: "We Have God. A bold declaration of faith, with Bishop Sam Asare-Bediako",
     status: "released",
@@ -117,6 +125,7 @@ export const mockPsalms: Psalm[] = [
   {
     id: "psalm-009",
     slug: "aseda-highlife-medley",
+    streamingUrl: "https://www.youtube.com/watch?v=JXUnCfpcxGs",
     title: "Aséda",
     subtitle: "A Highlife Medley. A Psalms of Nate live recording featuring Musikteers Ensemble",
     status: "released",
@@ -131,6 +140,7 @@ export const mockPsalms: Psalm[] = [
   {
     id: "psalm-010",
     slug: "odo-ben-ni",
+    streamingUrl: "https://www.youtube.com/watch?v=cF_tVCQx8SQ",
     title: "Ɔdɔ Ben Ni",
     subtitle: "What Manner of Love Is This? Dr. Nathanael Adjei ft. Musikteers Ensemble GH",
     status: "released",
@@ -145,6 +155,7 @@ export const mockPsalms: Psalm[] = [
   {
     id: "psalm-011",
     slug: "ebeye-yie",
+    streamingUrl: "https://www.youtube.com/watch?v=SdI-cuUneI8",
     title: "Ɛbɛyɛ Yie",
     subtitle: "It Shall Be Well. Dr. Nathanael Adjei ft. Jane Asantewaa Appiah-Okyere (Maame Jane)",
     status: "released",
