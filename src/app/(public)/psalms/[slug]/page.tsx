@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container";
 import { PsalmDownloads } from "@/components/psalms/PsalmDownloads";
+import { MailingListSignup } from "@/components/psalms/MailingListSignup";
 import { PsalmMetadata } from "@/components/psalms/PsalmMetadata";
 import { PsalmPreview } from "@/components/psalms/PsalmPreview";
 import { PsalmStreamingLinks } from "@/components/psalms/PsalmStreamingLinks";
@@ -16,6 +17,7 @@ export default async function PsalmDetailPage({ params }: { params: Promise<{ sl
       <PsalmPreview psalm={psalm} />
       <PsalmMetadata psalm={psalm} />
       <PsalmDownloads psalm={psalm} />
+      <MailingListSignup />
       <PsalmStreamingLinks psalm={psalm} />
     </Container>
   );

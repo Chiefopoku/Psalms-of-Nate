@@ -14,4 +14,6 @@ export type Psalm = {
   midiUrl?: string;
   mp3Url?: string;
   streamingUrl?: string;
+  coverUrl?: string;
+  description?: string;
 };
