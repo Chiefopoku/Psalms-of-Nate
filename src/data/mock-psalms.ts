@@ -132,11 +132,12 @@ export const mockPsalms: Psalm[] = [
     id: "psalm-010",
     slug: "odo-ben-ni",
     title: "Ɔdɔ Ben Ni",
-    subtitle: "What Love Is This. Dr. Nathanael Adjei ft. Musikteers Ensemble GH",
+    subtitle: "What Manner of Love Is This? Dr. Nathanael Adjei ft. Musikteers Ensemble GH",
     status: "released",
     mood: "Adoring",
     tempo: "Moderate",
     instruments: ["SATB Choir", "Piano", "Strings"],
+    releaseDate: "2026-04-03",
     coverUrl: "/images/revamp/odo-ben-ni.jpg",
     scoreUrl: "/scores/odo-ben-ni.pdf",
     description: "A tender single marvelling at the depth of divine love, sung with the Musikteers Ensemble GH."
