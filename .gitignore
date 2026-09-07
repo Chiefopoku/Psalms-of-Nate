@@ -1,6 +1,15 @@
-node_modules
-.next
-out
+node_modules/
+.next/
+out/
+dist/
+coverage/
+.env
 .env*.local
-dist
-coverage
+.DS_Store
+.venv/
+
+.next-dev/
+
+# Heavy local build/scratch artifacts (not part of the site source)
+scrollcraft/builds/
+assets/

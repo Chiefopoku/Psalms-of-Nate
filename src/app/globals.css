@@ -1,20 +1,24 @@
+@import "../styles/scrollcraft.css";
+@import "../styles/choral.css";
+@import "../styles/label.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: 39 43% 95%;
-  --foreground: 222 36% 11%;
-  --muted: 36 26% 86%;
-  --border: 36 20% 76%;
-  --primary: 171 62% 26%;
-  --accent: 16 88% 55%;
-  --indigo: 241 34% 33%;
-  --gold: 39 92% 58%;
-  --wine: 344 55% 34%;
-  --surface: 0 0% 100%;
-  --surface-soft: 39 48% 91%;
-  --shadow: 222 42% 12%;
+  /* Light "choral" palette — matches the footer panel. Sub-pages read these tokens. */
+  --background: 44 40% 94%;   /* #f5f2e8 paper */
+  --foreground: 153 26% 18%;  /* #22392f deep-green ink */
+  --muted: 44 30% 88%;
+  --border: 75 13% 78%;       /* #cdd0c0 line */
+  --primary: 39 53% 70%;      /* #dcc28a gold — button hover */
+  --accent: 162 44% 17%;      /* #183d32 green — accents/selection */
+  --indigo: 241 44% 66%;
+  --gold: 39 60% 66%;
+  --wine: 344 55% 60%;
+  --surface: 46 43% 95%;      /* #f8f6ed panel */
+  --surface-soft: 44 33% 90%;
+  --shadow: 153 26% 12%;
 }
 
 * {
@@ -24,10 +28,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 8% 10%, hsl(var(--gold) / 0.28), transparent 28rem),
-    radial-gradient(circle at 92% 6%, hsl(var(--accent) / 0.18), transparent 24rem),
-    linear-gradient(180deg, hsl(39 52% 97%) 0%, hsl(38 38% 93%) 45%, hsl(184 28% 90%) 100%);
+  background: hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   text-rendering: optimizeLegibility;
@@ -39,10 +40,56 @@ a {
   text-decoration: none;
 }
 
+/* Animated dotted field behind content — echoes the footer's dot texture but
+   drifts slowly, so the page reads with texture instead of flat cream. A soft
+   warm/green glow rides on top so it isn't a uniform grid. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(60% 50% at 82% 8%, hsl(39 55% 62% / 0.12), transparent 70%),
+    radial-gradient(55% 55% at 6% 88%, hsl(152 32% 40% / 0.10), transparent 72%),
+    radial-gradient(hsl(152 26% 40% / 0.18) 1px, transparent 1.5px);
+  background-size: 100% 100%, 100% 100%, 20px 20px;
+  /* Strongest on the left, fading out through the centre toward the right. */
+  -webkit-mask-image: linear-gradient(to right, #000 0%, #000 22%, transparent 72%);
+  mask-image: linear-gradient(to right, #000 0%, #000 22%, transparent 72%);
+  animation: dot-drift 32s linear infinite;
+}
+
+@keyframes dot-drift {
+  from { background-position: 0 0, 0 0, 0 0; }
+  to   { background-position: 0 0, 0 0, 200px 200px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
+}
+
 ::selection {
   background: hsl(var(--accent) / 0.24);
 }
 
 .text-balance {
   text-wrap: balance;
+}
+
+/* Smooth return for the site-wide magnetic-button effect (see MagneticButtons).
+   Kept in CSS so the JS controller only ever writes `transform`. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .lb-btn,
+  .lb-btn-yt,
+  .lb-btn-sm,
+  .lb-nav-cta,
+  .lb-nav-search,
+  .choral-button,
+  a[download],
+  button[type="submit"],
+  [data-magnetic] {
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
+  }
 }
