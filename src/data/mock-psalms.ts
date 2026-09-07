@@ -12,7 +12,7 @@ export const mockPsalms: Psalm[] = [
     mood: "Prayerful",
     tempo: "Moderate",
     instruments: ["SATB Choir", "Piano", "Strings"],
-    releaseDate: "2025-05-25",
+    releaseDate: "2025-06-27",
     coverUrl: "/images/revamp/madesre.jpg",
     scoreUrl: "/scores/madesre.pdf",
     description: "An expressive cry of faith rooted in Ghanaian sacred traditions, combining rich polyphonic choir counterpoint with reverent piano accompaniment."
@@ -27,7 +27,7 @@ export const mockPsalms: Psalm[] = [
     mood: "Majestic",
     tempo: "Andante Maestoso",
     instruments: ["Full Choir", "Organ", "Brass"],
-    releaseDate: "2025-08-15",
+    releaseDate: "2025-09-19",
     coverUrl: "/images/revamp/heaven-akwantuo.jpg",
     scoreUrl: "/scores/heaven-akwantuo.pdf",
     description: "Inspired by the pilgrim's march towards the heavenly city, blending Western classical choral forms with authentic Akan rhythmic nuances."
@@ -42,7 +42,7 @@ export const mockPsalms: Psalm[] = [
     mood: "Reverent",
     tempo: "Largo",
     instruments: ["Voice", "Chamber Choir", "Strings"],
-    releaseDate: "2025-06-20",
+    releaseDate: "2026-01-09",
     coverUrl: "/images/revamp/gye-me-kra-cover.jpg",
     scoreUrl: "/scores/gye-me-kra.pdf",
     description: "A poignant choral reflection pleading for divine grace and redemption, featuring solo tenor lines soaring above choir harmonies."
@@ -57,7 +57,7 @@ export const mockPsalms: Psalm[] = [
     mood: "Celebratory",
     tempo: "Bright",
     instruments: ["Choir", "Acoustic Instruments", "Percussion"],
-    releaseDate: "2025-09-01",
+    releaseDate: "2026-07-31",
     coverUrl: "/images/revamp/maseda-ni.jpg",
     scoreUrl: "/scores/maseda-ni.pdf",
     description: "Joyful celebration of God's enduring faithfulness, structured for congregational and choral performance."
@@ -72,7 +72,7 @@ export const mockPsalms: Psalm[] = [
     mood: "Worshipful",
     tempo: "Moderato",
     instruments: ["SATB Choir", "Organ"],
-    releaseDate: "2025-07-10",
+    releaseDate: "2026-08-21",
     coverUrl: "/images/revamp/we-praise-thee.jpg",
     scoreUrl: "/scores/we-praise-thee.pdf",
     description: "Classical four-part sacred choral harmony lifting timeless praise to the Almighty."
@@ -87,7 +87,7 @@ export const mockPsalms: Psalm[] = [
     mood: "Joyful",
     tempo: "Moderate",
     instruments: ["SATB Choir", "Musikteers Ensemble"],
-    releaseDate: "2025-08-30",
+    releaseDate: "2026-06-26",
     coverUrl: "/images/revamp/yesu.jpg",
     scoreUrl: "/scores/yesu.pdf",
     description: "A live single longing to be like Jesus, set to the hymn 'I Would Be Like Jesus' (SDAH 311) and recorded with the Musikteers Ensemble."
@@ -102,7 +102,7 @@ export const mockPsalms: Psalm[] = [
     mood: "Festive",
     tempo: "Vivace (Highlife)",
     instruments: ["Choir", "Guitar", "Brass", "Percussion"],
-    releaseDate: "2025-09-12",
+    releaseDate: "2025-11-28",
     coverUrl: "/images/revamp/nkunimdie-nnwom.jpg",
     scoreUrl: "/scores/nkunimdie-nnwom.pdf",
     description: "An exhilarating medley blending sacred scripture with traditional Ghanaian Highlife rhythms and choir harmonies."
@@ -156,6 +156,7 @@ export const mockPsalms: Psalm[] = [
     id: "psalm-011",
     slug: "ebeye-yie",
     streamingUrl: "https://www.youtube.com/watch?v=SdI-cuUneI8",
+    releaseDate: "2025-07-29",
     title: "Ɛbɛyɛ Yie",
     subtitle: "It Shall Be Well. Dr. Nathanael Adjei ft. Jane Asantewaa Appiah-Okyere (Maame Jane)",
     status: "released",
@@ -165,6 +166,36 @@ export const mockPsalms: Psalm[] = [
     coverUrl: "/images/revamp/ebeye-yie.jpg",
     scoreUrl: "/scores/ebeye-yie.pdf",
     description: "A single of quiet assurance that all shall be well, featuring Jane Asantewaa Appiah-Okyere (Maame Jane)."
+  },
+  {
+    id: "psalm-012",
+    slug: "ko-pa",
+    title: "Ko Pa",
+    subtitle: "The Good Fight. Dr. Nathanael Adjei ft. Kwame Twumasi & Elizabeth Sam",
+    status: "released",
+    mood: "Resolute",
+    tempo: "Moderate",
+    instruments: ["SATB Choir", "Soloists", "Piano"],
+    releaseDate: "2026-05-29",
+    coverUrl: "/images/revamp/ko-pa.jpg",
+    scoreUrl: "/scores/ko-pa.pdf",
+    streamingUrl: "https://www.youtube.com/watch?v=aTMl5cDRWRU",
+    description: "A charge to fight the good fight of faith, featuring soloists Kwame Twumasi and Elizabeth Sam."
+  },
+  {
+    id: "psalm-013",
+    slug: "onyame-waseda-ni",
+    title: "Onyame W'aseda Ni",
+    subtitle: "Our Thanks Unto the Lord. A Ghanaian Choral Anthem ft. Musikteers Ensemble GH",
+    status: "released",
+    mood: "Thankful",
+    tempo: "Andante Maestoso",
+    instruments: ["SATB Choir", "Brass", "Musikteers Ensemble"],
+    releaseDate: "2026-05-01",
+    coverUrl: "/images/revamp/onyame-waseda-ni.jpg",
+    scoreUrl: "/scores/onyame-waseda-ni.pdf",
+    streamingUrl: "https://www.youtube.com/watch?v=Cp0og225nO8",
+    description: "A choral anthem of thanksgiving to God, recorded with the Musikteers Ensemble GH."
   }
 ];
 
@@ -174,7 +205,7 @@ export const mockProjects: Project[] = [
     slug: "ghanaian-choral-worship",
     title: "Ghanaian Choral Worship",
     description: "Original choral works and sacred hymns reimagined through Ghanaian musical language, Scripture, and worship.",
-    psalmIds: ["psalm-001", "psalm-002", "psalm-003", "psalm-004", "psalm-005", "psalm-006", "psalm-007", "psalm-008", "psalm-009", "psalm-010", "psalm-011"],
+    psalmIds: ["psalm-001", "psalm-002", "psalm-003", "psalm-004", "psalm-005", "psalm-006", "psalm-007", "psalm-008", "psalm-009", "psalm-010", "psalm-011", "psalm-012", "psalm-013"],
     releaseDate: "2025-07-04"
   }
 ];
