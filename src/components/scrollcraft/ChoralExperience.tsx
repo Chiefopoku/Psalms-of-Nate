@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowDownToLine, ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Play, Search, Youtube } from "lucide-react";
 import { mockPsalms } from "@/data/mock-psalms";
 import { CoverflowCarousel, type CoverflowHandle } from "@/components/ui/coverflow-carousel";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { ScrollcraftRuntime } from "./ScrollcraftRuntime";
 
 const intentions = ["All works", "Prayer", "Thanksgiving", "Praise"] as const;
@@ -11,26 +12,34 @@ type Intention = typeof intentions[number];
 const groups: Record<string, Intention> = {
   "madesre-my-plea": "Prayer", "gye-me-kra": "Prayer", "maseda-ni": "Thanksgiving",
   "nkunimdie-nnwom": "Thanksgiving", "heaven-akwantuo": "Praise", "we-praise-thee": "Praise",
-  "yesu-2": "Praise", "yewo-nyame": "Praise"
+  "yesu-2": "Praise", "yewo-nyame": "Praise",
+  // Spirit assigned for the manuscript index filter — adjust if the composer prefers different groupings.
+  "aseda-highlife-medley": "Thanksgiving", "onyame-waseda-ni": "Thanksgiving",
+  "odo-ben-ni": "Thanksgiving", "ko-pa": "Prayer", "ebeye-yie": "Prayer"
 };
-const featuredVideo = "https://drive.google.com/file/d/1wFdaYPH9F8_KBIf0YUJiMJ6IRmJasuZB/view";
-// Works with correct square cover artwork shown in the visual catalogue.
-const COVERED = new Set(["madesre-my-plea", "gye-me-kra", "heaven-akwantuo", "maseda-ni", "we-praise-thee", "yesu-2", "nkunimdie-nnwom", "yewo-nyame"]);
+const featuredVideo = "https://www.youtube.com/watch?v=vudW7fytO7E";
 
 export function ChoralExperience() {
   const [intention, setIntention] = useState<Intention>("All works");
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
+  const [scoreSpirit, setScoreSpirit] = useState<Intention>("All works");
   const cover = useRef<CoverflowHandle>(null);
   const selectedWorks = mockPsalms.filter(w => intention === "All works" || groups[w.slug] === intention);
-  // Only works whose real square cover art exists get a card in the catalogue.
-  const withCover = (w: typeof mockPsalms[number]) => COVERED.has(w.slug);
+  // Every work with cover artwork gets a card in the catalogue.
+  const withCover = (w: typeof mockPsalms[number]) => !!w.coverUrl;
+  const catalogueCount = mockPsalms.filter(withCover).length;
   const covered = selectedWorks.filter(withCover);
   const activeWork = covered[Math.min(active, covered.length - 1)] ?? covered[0];
   // Drop filter tabs that would show no covers (e.g. Prayer, whose works have none).
   const availableIntentions = ["All works", ...intentions.filter(v => v !== "All works" && mockPsalms.some(w => withCover(w) && groups[w.slug] === v))] as Intention[];
-  const manuscripts = selectedWorks.filter(w => `${w.title} ${w.subtitle ?? ""}`.toLocaleLowerCase().includes(query.toLocaleLowerCase()));
-  const available = mockPsalms.filter(w => w.scoreUrl).length;
+  // Manuscript index: every work with a downloadable score, filtered on its own spirit + search (independent of the catalogue tabs above).
+  const scores = mockPsalms.filter(w => w.scoreUrl);
+  const scoreSpirits = ["All works", ...intentions.filter(v => v !== "All works" && scores.some(w => groups[w.slug] === v))] as Intention[];
+  const scoreWorks = scores.filter(w =>
+    (scoreSpirit === "All works" || groups[w.slug] === scoreSpirit) &&
+    `${w.title} ${w.subtitle ?? ""}`.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+  );
 
   return (
     <div className="label-home choral-home">
@@ -44,11 +53,11 @@ export function ChoralExperience() {
         <div className="lb-hero-inner">
           <p className="lb-eyebrow">Ghanaian composer &amp; physician</p>
           <h1 id="lb-hero-title">Nathanael<br />Adjei</h1>
-          <p className="lb-hero-sub">Sacred choral music, rooted in faith. Akan &amp; English, for voices gathered together.</p>
+          <p className="lb-hero-sub">Sacred choral music, rooted in faith. Akan (Twi) &amp; English, for voices gathered together.</p>
           <div className="lb-hero-actions">
             <a className="lb-btn" href="#compositions"><Play size={16} fill="currentColor" /> Explore the catalogue</a>
             <a className="lb-btn-yt" href="https://www.youtube.com/@PsalmsofNate" target="_blank" rel="noopener noreferrer"><Youtube size={18} /> Listen on YouTube</a>
-            <span className="lb-hero-meta">{COVERED.size} works · Akan &amp; English</span>
+            <span className="lb-hero-meta">{catalogueCount} works · Akan (Twi) &amp; English</span>
           </div>
         </div>
       </section>
@@ -69,7 +78,7 @@ export function ChoralExperience() {
         <p className="lb-cat-count" role="status">{covered.length} {covered.length === 1 ? "work" : "works"}{intention !== "All works" ? ` · ${intention}` : ""}</p>
         <div
           className="lb-cf"
-          style={{ ["--muted" as string]: "260 6% 12%", ["--ring" as string]: "40 45% 68%" } as CSSProperties}
+          style={{ ["--muted" as string]: "44 24% 88%", ["--ring" as string]: "40 45% 55%" } as CSSProperties}
         >
           <CoverflowCarousel
             key={intention}
@@ -77,7 +86,7 @@ export function ChoralExperience() {
             label="Composition covers"
             cardWidth="clamp(200px, 30vw, 360px)"
             onSelect={setActive}
-            slides={covered.map(w => ({ src: w.coverUrl, alt: `${w.title} cover artwork` }))}
+            slides={covered.map(w => ({ src: w.coverUrl ?? "", alt: `${w.title} cover artwork` }))}
           />
           {activeWork ? (
             <div className="lb-cf-caption" key={activeWork.id}>
@@ -97,64 +106,98 @@ export function ChoralExperience() {
       {/* ── PEAK: a cover opens into the film ───────────────────── */}
       <section id="performance" className="lb-feature" data-sc-act="scrub" data-sc-span="3.2" aria-labelledby="lb-feat-title">
         <div className="lb-feature-stage">
-          <div className="lb-feature-frame">
-            <img className="lb-feature-cover" src="/images/revamp/madesre.jpg" alt="Madesrɛ (My Plea) cover artwork" width="1200" height="1200" loading="lazy" />
-            <video data-sc-scrub data-src="/videos/choral-scrub.mp4" data-mobile-src="/videos/choral-scrub-m.mp4" muted playsInline preload="none" aria-label="Silent excerpt from the Madesrɛ performance film" />
+          <div className="lb-feature-head">
+            <p className="lb-eyebrow">The featured film</p>
+            <h2 id="lb-feat-title">Madesrɛ <span className="lb-serif">My Plea</span></h2>
+            <p className="lb-feature-lead">A performance film of the prayer that opens the catalogue — SATB choir, piano and strings, sung in Akan (Twi).</p>
+          </div>
+          <a className="lb-feature-frame" href={featuredVideo} target="_blank" rel="noopener noreferrer" aria-label="Watch Madesrɛ (My Plea) on YouTube">
+            <img className="lb-feature-cover" src="/images/revamp/madesre-wide.jpg" alt="Madesrɛ (My Plea) cover artwork" width="1600" height="888" loading="lazy" />
+            <span className="lb-feature-play" aria-hidden="true"><Play size={22} fill="currentColor" /></span>
             <div className="lb-feature-copy">
               <p className="lb-eyebrow">The featured film</p>
-              <h2 id="lb-feat-title">Madesrɛ <span className="lb-serif">My Plea</span></h2>
-              <a href={featuredVideo} target="_blank" rel="noopener noreferrer" className="lb-textlink">Watch the film <ArrowUpRight size={17} /></a>
+              <h2>Madesrɛ <span className="lb-serif">My Plea</span></h2>
+              <span className="lb-textlink">Watch on YouTube <ArrowUpRight size={17} /></span>
+            </div>
+          </a>
+          <p className="lb-feature-hint" aria-hidden="true">Scroll to play</p>
+        </div>
+      </section>
+
+      {/* ── INTIMACY: the composer (scroll-tilt reveal) ─────────── */}
+      <section id="inspiration" className="lb-composer" aria-labelledby="lb-bio-title">
+        <ContainerScroll
+          titleComponent={
+            <div className="lb-composer-head">
+              <p className="lb-eyebrow">The composer</p>
+              <h2 id="lb-bio-title">A prayer begins with one voice. <span className="lb-serif">Harmony gives it a home.</span></h2>
+            </div>
+          }
+        >
+          <div className="lb-composer-card">
+            <img src="/images/revamp/nate-composer.jpg" alt="Dr. Nathanael Adjei" width="933" height="1400" loading="lazy" />
+            <div className="lb-composer-bio">
+              <div className="lb-composer-name">
+                <h3>Nathanael Adjei</h3>
+                <p className="lb-composer-role">Composer &amp; Physician</p>
+              </div>
+              <p>Scripture, sacred hymnody and the warmth of Ghanaian choral expression shape the music of Psalms of Nate. Through Akan (Twi) and English, these compositions give voice to prayer, thanksgiving and praise.</p>
+              <Link className="lb-textlink" href="/about">Meet the composer <ArrowUpRight size={16} /></Link>
             </div>
           </div>
-        </div>
+        </ContainerScroll>
       </section>
 
-      {/* ── INTIMACY: the composer ──────────────────────────────── */}
-      <section id="inspiration" className="lb-bio" data-sc-act="flow" aria-labelledby="lb-bio-title">
-        <figure className="lb-bio-photo" data-choral-reveal>
-          <img src="/images/scrollcraft/nate-calling.jpg" alt="Dr. Nathanael Adjei" width="1800" height="1200" loading="lazy" />
-        </figure>
-        <div className="lb-bio-text" data-choral-reveal>
-          <p className="lb-eyebrow">The composer</p>
-          <h2 id="lb-bio-title">A prayer begins with one voice. <span className="lb-serif">Harmony gives it a home.</span></h2>
-          <p>Scripture, sacred hymnody and the warmth of Ghanaian choral expression shape the music of Psalms of Nate. Through Akan and English, these compositions give voice to prayer, thanksgiving and praise.</p>
-          <Link className="lb-textlink" href="/about">Meet the composer <ArrowUpRight size={16} /></Link>
-        </div>
-      </section>
-
-      {/* ── TRUST: the scores ───────────────────────────────────── */}
+      {/* ── TRUST: the manuscript index ─────────────────────────── */}
       <section id="manuscripts" className="lb-scores" data-sc-act="flow" aria-labelledby="lb-scores-title">
-        <div className="lb-scores-intro" data-choral-reveal>
-          <BookOpen size={30} strokeWidth={1.25} />
-          <h2 id="lb-scores-title">From this heart. <span className="lb-serif">To your choir.</span></h2>
-          <p>The manuscript collection, for every voice to begin.</p>
-          <Link href="/contact" className="lb-textlink">Ask about a score <ArrowUpRight size={16} /></Link>
-        </div>
-        <div className="lb-scores-index">
-          <div className="lb-scores-bar">
-            <span>{available} PDF{available === 1 ? "" : "s"} available</span>
+        <header className="lb-scores-head" data-choral-reveal>
+          <div className="lb-scores-headline">
+            <p className="lb-eyebrow">The manuscripts</p>
+            <h2 id="lb-scores-title">From this heart. <span className="lb-serif">To your choir.</span></h2>
+            <p className="lb-scores-sub">Downloadable scores for every voice — for choirs, directors and worship teams to begin.</p>
+          </div>
+          <div className="lb-scores-tools">
+            <div className="lb-scores-filter" role="group" aria-label="Filter scores by spirit">
+              {scoreSpirits.map(s => (
+                <button key={s} type="button" aria-pressed={scoreSpirit === s} onClick={() => setScoreSpirit(s)}>{s === "All works" ? "All" : s}</button>
+              ))}
+            </div>
             <label className="lb-search"><Search size={17} /><span className="sr-only">Search manuscripts</span>
               <input value={query} onChange={e => setQuery(e.target.value)} placeholder="Find a composition…" type="search" />
             </label>
           </div>
-          {available === 0 ? <p className="lb-scores-notice">PDF manuscripts are not yet available. For a score, please get in touch.</p> : null}
-          <div aria-live="polite" className="lb-scores-rows">
-            {manuscripts.length ? manuscripts.map(w => (
-              <div className="lb-scores-row" key={w.id}>
-                <div><Link href={`/psalms/${w.slug}`}>{w.title}</Link><span>{groups[w.slug]}</span></div>
+        </header>
+        <p className="lb-scores-count" role="status">{scoreWorks.length} {scoreWorks.length === 1 ? "score" : "scores"}{scoreSpirit !== "All works" ? ` · ${scoreSpirit}` : ""}</p>
+        <div aria-live="polite" className="lb-scores-list">
+          {scoreWorks.length ? scoreWorks.map(w => (
+            <article className="lb-score" key={w.id}>
+              <Link href={`/psalms/${w.slug}`} className="lb-score-thumb" tabIndex={-1} aria-hidden="true">
+                {w.coverUrl ? <img src={w.coverUrl} alt="" loading="lazy" /> : <span className="lb-score-thumb-fallback"><BookOpen size={18} /></span>}
+              </Link>
+              <div className="lb-score-main">
+                <h3><Link href={`/psalms/${w.slug}`}>{w.title}</Link></h3>
+                {w.subtitle ? <p className="lb-score-sub">{w.subtitle}</p> : null}
+                <ul className="lb-score-meta">
+                  {w.instruments[0] ? <li>{w.instruments[0]}</li> : null}
+                  {groups[w.slug] ? <li>{groups[w.slug]}</li> : null}
+                  {w.tempo ? <li>{w.tempo}</li> : null}
+                </ul>
+              </div>
+              <div className="lb-score-actions">
+                {w.streamingUrl ? <a className="lb-score-listen" href={w.streamingUrl} target="_blank" rel="noopener noreferrer"><Youtube size={15} /> Listen</a> : null}
                 {w.scoreUrl
-                  ? <a href={w.scoreUrl} download className="lb-scores-dl" aria-label={`Download ${w.title} PDF`}>PDF <ArrowDownToLine size={15} /></a>
-                  : <span className="lb-scores-pending">Coming soon</span>}
+                  ? <a className="lb-score-pdf" href={w.scoreUrl} download aria-label={`Download ${w.title} score PDF`}>PDF <ArrowDownToLine size={15} /></a>
+                  : <span className="lb-scores-pending">Score soon</span>}
               </div>
-            )) : (
-              <div className="lb-scores-empty">
-                <p>No compositions match “{query}”.</p>
-                <button type="button" onClick={() => { setQuery(""); setIntention("All works"); }}>Clear search and filters</button>
-              </div>
-            )}
-          </div>
-          <p className="lb-scores-foot">For performance permissions, arrangements and choir enquiries, <Link href="/contact">contact Psalms of Nate</Link>.</p>
+            </article>
+          )) : (
+            <div className="lb-scores-empty">
+              <p>No compositions match “{query}”.</p>
+              <button type="button" onClick={() => { setQuery(""); setScoreSpirit("All works"); }}>Clear search and filters</button>
+            </div>
+          )}
         </div>
+        <p className="lb-scores-foot">For performance permissions, arrangements and choir enquiries, <Link href="/contact" className="lb-textlink">contact Psalms of Nate <ArrowUpRight size={15} /></Link></p>
       </section>
     </div>
   );

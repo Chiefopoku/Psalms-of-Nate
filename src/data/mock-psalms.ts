@@ -36,7 +36,7 @@ export const mockPsalms: Psalm[] = [
     id: "psalm-003",
     slug: "gye-me-kra",
     streamingUrl: "https://www.youtube.com/watch?v=23casVU-_-g",
-    title: "Gye Me Kra (San Bra Awrade)",
+    title: "Gye Me Kra (San Bra Awurade)",
     subtitle: "Redeem My Soul (Return, O Lord). An anthem of deliverance and hope",
     status: "released",
     mood: "Reverent",
