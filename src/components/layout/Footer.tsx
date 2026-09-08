@@ -16,5 +16,5 @@ const groups = [
 export function Footer(){return <footer className="nate-footer"><div className="nate-footer-panel">
   <div className="footer-texture" aria-hidden="true"/>
   <div className="footer-top"><div className="footer-brand"><Link href="/" className="nate-wordmark"><Music2 strokeWidth={1.2}/><span>Psalms of Nate</span></Link><p>Let the praise rise.</p><div className="footer-socials">{socials.map(([label,href,icon])=><a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>{icon}</a>)}</div></div>{groups.map(group=><div key={group.title} className="footer-links"><h2>{group.title}</h2><nav aria-label={group.title}>{group.links.map(([label,href])=><Link key={href} href={href}>{label}</Link>)}</nav></div>)}</div>
-  <div className="footer-bottom"><div><Link href="/contact">Scores &amp; permissions</Link><Link href="/about">Made for voices together</Link></div><p>© {new Date().getFullYear()} Psalms of Nate. All rights reserved.</p></div>
+  <div className="footer-bottom"><div><Link href="/contact">Scores &amp; permissions</Link><Link href="/about">Made for voices together</Link></div><p>© {new Date().getFullYear()} Psalms of Nate. All rights reserved. · Web design by Ozprix Studios</p></div>
   </div></footer>}
