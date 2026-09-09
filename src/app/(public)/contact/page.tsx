@@ -65,7 +65,7 @@ export default function ContactPage() {
             <div>
               <h3 className="font-semibold text-foreground">Performing &amp; recording</h3>
               <p className="mt-2 text-sm leading-7 text-foreground/70">
-                Permission is warmly given for worship and non-commercial performance — just reach out first so we can point you to the correct edition. For recordings, broadcasts, or commercial use, please request written permission.
+                You are free to perform Psalms of Nate works in worship — no permission needed. We only ask that you request written permission for recordings, broadcasts, or any commercial use.
               </p>
             </div>
             <div>
