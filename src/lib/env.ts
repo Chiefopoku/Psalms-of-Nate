@@ -7,5 +7,5 @@ export const env = {
     messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
   },
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "https://psalmsofnate.com"
 };
