@@ -12,7 +12,7 @@ export const metadata = createPageMetadata(
 export default function ReleasedPage() {
   return (
     <>
-      <PageHeader title="Released" description="Completed psalms ready for listening and download." />
+      <PageHeader title="Released" description="Completed psalms ready for watching and download." />
       <PsalmGrid psalms={mockPsalms.filter((psalm) => psalm.status === "released")} />
     </>
   );

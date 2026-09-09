@@ -56,7 +56,7 @@ export function ChoralExperience() {
           <p className="lb-hero-sub">Sacred choral music, rooted in faith. Akan (Twi) &amp; English, for voices gathered together.</p>
           <div className="lb-hero-actions">
             <a className="lb-btn" href="#compositions"><Play size={16} fill="currentColor" /> Explore the catalogue</a>
-            <a className="lb-btn-yt" href="https://www.youtube.com/@PsalmsofNate" target="_blank" rel="noopener noreferrer"><Youtube size={18} /> Listen on YouTube</a>
+            <a className="lb-btn-yt" href="https://www.youtube.com/@PsalmsofNate" target="_blank" rel="noopener noreferrer"><Youtube size={18} /> Watch on YouTube</a>
             <span className="lb-hero-meta">{catalogueCount} works · Akan (Twi) &amp; English</span>
           </div>
         </div>
@@ -184,7 +184,7 @@ export function ChoralExperience() {
                 </ul>
               </div>
               <div className="lb-score-actions">
-                {w.streamingUrl ? <a className="lb-score-listen" href={w.streamingUrl} target="_blank" rel="noopener noreferrer"><Youtube size={15} /> Listen</a> : null}
+                {w.streamingUrl ? <a className="lb-score-listen" href={w.streamingUrl} target="_blank" rel="noopener noreferrer"><Youtube size={15} /> Watch</a> : null}
                 {w.scoreUrl
                   ? <a className="lb-score-pdf" href={w.scoreUrl} download aria-label={`Download ${w.title} score PDF`}>PDF <ArrowDownToLine size={15} /></a>
                   : <span className="lb-scores-pending">Score soon</span>}
