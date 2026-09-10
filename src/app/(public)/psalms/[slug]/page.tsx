@@ -12,6 +12,10 @@ export function generateStaticParams() {
   return mockPsalms.map((p) => ({ slug: p.slug }));
 }
 
+// ponytail: 13 fixed works — any other slug is a real 404, not an on-demand render.
+// Also stops loading-stream flush that turned notFound() into a soft 200.
+export const dynamicParams = false;
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const psalm = mockPsalms.find((item) => item.slug === slug);

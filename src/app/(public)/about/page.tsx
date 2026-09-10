@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Play } from "lucide-react";
 import { ExpandableGallery } from "@/components/ui/gallery-animation";
+import { createPageMetadata } from "@/lib/metadata";
 
 const gallery = [
   { src: "/images/revamp/nate-composer.jpg", alt: "Dr. Nathanael Adjei, composer" },
@@ -9,11 +10,11 @@ const gallery = [
   { src: "/images/revamp/nate-piano.jpg", alt: "Dr. Nathanael Adjei at the piano" },
 ];
 
-export const metadata = {
-  title: "About Dr. Nathanael Adjei · Psalms of Nate",
-  description:
-    "Dr. Nathanael Adjei is a medical doctor, composer and church musician, and the founder of Psalms of Nate — Scripture-centered sacred and choral music blending Ghanaian heritage with Christian worship.",
-};
+export const metadata = createPageMetadata(
+  "About Dr. Nathanael Adjei",
+  "Dr. Nathanael Adjei is a medical doctor, composer and church musician, and the founder of Psalms of Nate — Scripture-centered sacred and choral music blending Ghanaian heritage with Christian worship.",
+  "/about"
+);
 
 const roles = [
   ["Founder & Director", "Psalms of Nate"],

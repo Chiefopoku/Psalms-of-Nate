@@ -3,12 +3,13 @@ import { Mail, ArrowUpRight } from "lucide-react";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Container } from "@/components/layout/Container";
 import { ContactForm } from "@/components/psalms/ContactForm";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata = {
-  title: "Contact · Psalms of Nate",
-  description:
-    "Reach out for choral collaborations, worship use, and licensing — plus how permission and copyright work for Psalms of Nate scores.",
-};
+export const metadata = createPageMetadata(
+  "Contact",
+  "Reach out for choral collaborations, worship use, and licensing — plus how permission and copyright work for Psalms of Nate scores.",
+  "/contact"
+);
 
 const EMAIL = "psalmsofnate@gmail.com";
 
