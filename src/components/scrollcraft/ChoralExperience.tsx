@@ -52,7 +52,7 @@ export function ChoralExperience() {
         </div>
         <div className="lb-hero-inner">
           <p className="lb-eyebrow">Ghanaian composer &amp; physician</p>
-          <h1 id="lb-hero-title">Nathanael<br />Adjei</h1>
+          <h1 id="lb-hero-title">Nathanael <br />Adjei</h1>
           <p className="lb-hero-sub">Sacred choral music, rooted in faith. Akan (Twi) &amp; English, for voices gathered together.</p>
           <div className="lb-hero-actions">
             <a className="lb-btn" href="#compositions"><Play size={16} fill="currentColor" /> Explore the catalogue</a>
@@ -120,7 +120,7 @@ export function ChoralExperience() {
               <span className="lb-textlink">Watch on YouTube <ArrowUpRight size={17} /></span>
             </div>
           </a>
-          <p className="lb-feature-hint" aria-hidden="true">Scroll to play</p>
+          <p className="lb-feature-hint" aria-hidden="true">Scroll to explore · watch on YouTube</p>
         </div>
       </section>
 
@@ -172,7 +172,7 @@ export function ChoralExperience() {
           {scoreWorks.length ? scoreWorks.map(w => (
             <article className="lb-score" key={w.id}>
               <Link href={`/psalms/${w.slug}`} className="lb-score-thumb" tabIndex={-1} aria-hidden="true">
-                {w.coverUrl ? <img src={w.coverUrl} alt="" loading="lazy" /> : <span className="lb-score-thumb-fallback"><BookOpen size={18} /></span>}
+                {w.coverUrl ? <img src={w.coverUrl} alt={`${w.title} cover artwork — Psalms of Nate`} loading="lazy" /> : <span className="lb-score-thumb-fallback"><BookOpen size={18} /></span>}
               </Link>
               <div className="lb-score-main">
                 <h3><Link href={`/psalms/${w.slug}`}>{w.title}</Link></h3>

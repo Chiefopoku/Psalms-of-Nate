@@ -5,7 +5,7 @@ import { mockProjects, mockPsalms } from "@/data/mock-psalms";
 export default function sitemap(): MetadataRoute.Sitemap {
   const u = (path: string) => new URL(path, env.siteUrl).toString();
 
-  const staticPages = ["/", "/about", "/contact", "/library", "/psalms", "/projects", "/released", "/unreleased"].map(
+  const staticPages = ["/", "/about", "/contact", "/library", "/projects"].map(
     (path) => ({ url: u(path), changeFrequency: "weekly" as const, priority: path === "/" ? 1 : 0.7 })
   );
 

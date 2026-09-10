@@ -10,8 +10,7 @@ const socials: [string, string, React.ReactNode][] = [
 ];
 const groups = [
   {title:"Explore",links:[["The composer","/about"],["Compositions","/library"],["Manuscripts","/#manuscripts"]]},
-  {title:"Connect",links:[["Contact","/contact"],["Projects","/projects"],["Search the music","/search"]]},
-  {title:"The collection",links:[["Released music","/released"],["Upcoming works","/unreleased"]]}
+  {title:"Connect",links:[["Contact","/contact"],["Projects","/projects"],["Search the music","/search"]]}
 ];
 export function Footer(){return <footer className="nate-footer"><div className="nate-footer-panel">
   <div className="footer-texture" aria-hidden="true"/>

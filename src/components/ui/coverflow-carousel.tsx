@@ -347,6 +347,7 @@ export const CoverflowCarousel = React.forwardRef<CoverflowHandle, CoverflowCaro
                   src={slide.src}
                   alt={slide.alt}
                   draggable={false}
+                  loading="lazy"
                   className="h-full w-full select-none object-cover"
                 />
               </div>
