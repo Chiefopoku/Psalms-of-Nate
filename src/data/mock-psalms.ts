@@ -92,6 +92,7 @@ export const mockPsalms: Psalm[] = [
     slug: "yesu-2",
     streamingUrl: "https://www.youtube.com/watch?v=4vghhpz4iTI",
     appleMusicUrl: "https://music.apple.com/us/album/m%C9%9Bs%C9%9B-yesu-feat-musikteers-ensemble-gh/6784572569?i=6784572570",
+    spotifyUrl: "https://open.spotify.com/track/2MFr2TfLOQNAvvtj9QY9N3",
     title: "Mɛsɛ Yesu",
     subtitle: "I Would Be Like Jesus (SDAH 311). A Psalms of Nate live recording featuring Musikteers Ensemble",
     status: "released",

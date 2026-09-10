@@ -77,20 +77,3 @@ body::before {
 .text-balance {
   text-wrap: balance;
 }
-
-/* Smooth return for the site-wide magnetic-button effect (see MagneticButtons).
-   Kept in CSS so the JS controller only ever writes `transform`. */
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .lb-btn,
-  .lb-btn-yt,
-  .lb-btn-sm,
-  .lb-nav-cta,
-  .lb-nav-search,
-  .choral-button,
-  a[download],
-  button[type="submit"],
-  [data-magnetic] {
-    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-    will-change: transform;
-  }
-}
