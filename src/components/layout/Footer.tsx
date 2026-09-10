@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { Facebook, Instagram, Music2, Youtube } from "lucide-react";
+import { APPLE_ARTIST, SPOTIFY_ARTIST } from "@/data/streaming";
+import { AppleMusicIcon, SpotifyIcon } from "@/components/icons/BrandIcons";
 const socials: [string, string, React.ReactNode][] = [
   ["YouTube", "https://www.youtube.com/@PsalmsofNate", <Youtube key="yt" size={18} />],
+  ["Apple Music", APPLE_ARTIST, <AppleMusicIcon key="am" className="h-[17px] w-[17px]" />],
+  ["Spotify", SPOTIFY_ARTIST, <SpotifyIcon key="sp" className="h-[17px] w-[17px]" />],
   ["Instagram", "https://www.instagram.com/psalms_of_nate/", <Instagram key="ig" size={18} />],
   ["Facebook", "https://www.facebook.com/profile.php?id=61576235281747", <Facebook key="fb" size={18} />],
   ["TikTok", "https://www.tiktok.com/@psalms.of.nate", (
