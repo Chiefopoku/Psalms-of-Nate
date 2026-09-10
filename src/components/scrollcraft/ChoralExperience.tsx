@@ -40,6 +40,12 @@ export function ChoralExperience() {
     (scoreSpirit === "All works" || groups[w.slug] === scoreSpirit) &&
     `${w.title} ${w.subtitle ?? ""}`.toLocaleLowerCase().includes(query.toLocaleLowerCase())
   );
+  // Cap the default (unfiltered) homepage list; filters/search still show every
+  // match. More than the cap → link out to the full /library page.
+  const HOME_SCORE_CAP = 6;
+  const capped = !query && scoreSpirit === "All works";
+  const visibleWorks = capped ? scoreWorks.slice(0, HOME_SCORE_CAP) : scoreWorks;
+  const hiddenCount = scoreWorks.length - visibleWorks.length;
 
   return (
     <div className="label-home choral-home">
@@ -169,7 +175,7 @@ export function ChoralExperience() {
         </header>
         <p className="lb-scores-count" role="status">{scoreWorks.length} {scoreWorks.length === 1 ? "score" : "scores"}{scoreSpirit !== "All works" ? ` · ${scoreSpirit}` : ""}</p>
         <div aria-live="polite" className="lb-scores-list">
-          {scoreWorks.length ? scoreWorks.map(w => (
+          {scoreWorks.length ? visibleWorks.map(w => (
             <article className="lb-score" key={w.id}>
               <Link href={`/psalms/${w.slug}`} className="lb-score-thumb" tabIndex={-1} aria-hidden="true">
                 {w.coverUrl ? <img src={w.coverUrl} alt={`${w.title} cover artwork — Psalms of Nate`} loading="lazy" /> : <span className="lb-score-thumb-fallback"><BookOpen size={18} /></span>}
@@ -197,6 +203,7 @@ export function ChoralExperience() {
             </div>
           )}
         </div>
+        {hiddenCount > 0 ? <Link href="/library" className="lb-scores-viewall">View all {scoreWorks.length} scores <ArrowUpRight size={16} /></Link> : null}
         <p className="lb-scores-foot">For performance permissions, arrangements and choir enquiries, <Link href="/contact" className="lb-textlink">contact Psalms of Nate <ArrowUpRight size={15} /></Link></p>
       </section>
     </div>

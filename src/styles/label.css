@@ -148,6 +148,8 @@
 .lb-scores-pending{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--lb-faint);white-space:nowrap}
 .lb-scores-empty{padding:48px 0;font-size:14px;line-height:1.9;color:var(--lb-soft)}
 .lb-scores-empty button{text-decoration:underline;text-underline-offset:4px;min-height:44px;color:var(--lb-ink)}
+.lb-scores-viewall{display:inline-flex;align-items:center;gap:6px;margin-top:24px;padding:12px 22px;border:1px solid var(--lb-gold);border-radius:999px;font-size:13px;font-weight:600;letter-spacing:.03em;color:var(--lb-ink);min-height:44px;transition:background .2s,color .2s}
+.lb-scores-viewall:hover{background:var(--lb-gold);color:var(--lb-bg)}
 .lb-scores-foot{font-size:12px;line-height:1.8;color:var(--lb-faint);margin-top:28px;max-width:60ch}
 .lb-scores-foot .lb-textlink{display:inline-flex;color:var(--lb-ink);font-size:12px;border-bottom-color:var(--lb-gold);margin-left:4px}
 @media(max-width:640px){
