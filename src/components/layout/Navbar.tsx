@@ -7,6 +7,7 @@ const links = [
   ["The composer", "/#composer"],
   ["Manuscripts", "/#manuscripts"],
   ["Library", "/library"],
+  ["Resources", "/resources"],
   ["About", "/about"],
 ];
 
