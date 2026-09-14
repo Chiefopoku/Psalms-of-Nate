@@ -1,5 +1,9 @@
 export type ReleaseStatus = "released" | "unreleased";
 
+export type Voice = "Soprano" | "Alto" | "Tenor" | "Bass" | "All parts";
+
+export type RehearsalTrack = { voice: Voice; url: string };
+
 export type Psalm = {
   id: string;
   slug: string;
@@ -18,4 +22,5 @@ export type Psalm = {
   spotifyUrl?: string;
   coverUrl?: string;
   description?: string;
+  rehearsalTracks?: RehearsalTrack[];
 };

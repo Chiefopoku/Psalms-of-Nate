@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container";
 import { PsalmDownloads } from "@/components/psalms/PsalmDownloads";
+import { RehearsalTracks } from "@/components/psalms/RehearsalTracks";
 import { MailingListSignup } from "@/components/psalms/MailingListSignup";
 import { PsalmMetadata } from "@/components/psalms/PsalmMetadata";
 import { PsalmPreview } from "@/components/psalms/PsalmPreview";
@@ -62,6 +63,7 @@ export default async function PsalmDetailPage({ params }: { params: Promise<{ sl
       <PsalmPreview psalm={psalm} />
       <PsalmMetadata psalm={psalm} />
       <PsalmDownloads psalm={psalm} />
+      <RehearsalTracks tracks={psalm.rehearsalTracks} />
       <MailingListSignup />
     </Container>
   );
