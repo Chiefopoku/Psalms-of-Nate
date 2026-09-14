@@ -22,6 +22,13 @@ export const mockPsalms: Psalm[] = [
   {
     id: "psalm-002",
     slug: "heaven-akwantuo",
+    rehearsalTracks: [
+      { voice: "Soprano", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fheaven-akwantuo%2Fsoprano.mp3?alt=media" },
+      { voice: "Alto", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fheaven-akwantuo%2Falto.mp3?alt=media" },
+      { voice: "Tenor", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fheaven-akwantuo%2Ftenor.mp3?alt=media" },
+      { voice: "Bass", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fheaven-akwantuo%2Fbass.mp3?alt=media" },
+      { voice: "All parts", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fheaven-akwantuo%2Fall-parts.mp3?alt=media" },
+    ],
     streamingUrl: "https://www.youtube.com/watch?v=5g5fSMwZWsg",
     appleMusicUrl: "https://music.apple.com/us/album/heaven-akwantuo-dr-nathanael-adjei/1840945659?i=1840945843",
     spotifyUrl: "https://open.spotify.com/track/2WOG4aMr7ig1QvdCsA5s3Q",
@@ -56,6 +63,13 @@ export const mockPsalms: Psalm[] = [
   {
     id: "psalm-004",
     slug: "maseda-ni",
+    rehearsalTracks: [
+      { voice: "Soprano", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fmaseda-ni%2Fsoprano.mp3?alt=media" },
+      { voice: "Alto", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fmaseda-ni%2Falto.mp3?alt=media" },
+      { voice: "Tenor", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fmaseda-ni%2Ftenor.mp3?alt=media" },
+      { voice: "Bass", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fmaseda-ni%2Fbass.mp3?alt=media" },
+      { voice: "All parts", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fmaseda-ni%2Fall-parts.mp3?alt=media" },
+    ],
     streamingUrl: "https://www.youtube.com/watch?v=3glppzRgg_U",
     appleMusicUrl: "https://music.apple.com/us/album/maseda-ni-feat-musikteers-ensemble-gh/6796248163?i=6796248164",
     spotifyUrl: "https://open.spotify.com/track/2IABpsbfeofJv8NuDggoQl",
@@ -156,6 +170,13 @@ export const mockPsalms: Psalm[] = [
   {
     id: "psalm-010",
     slug: "odo-ben-ni",
+    rehearsalTracks: [
+      { voice: "Soprano", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fodo-ben-ni%2Fsoprano.mp3?alt=media" },
+      { voice: "Alto", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fodo-ben-ni%2Falto.mp3?alt=media" },
+      { voice: "Tenor", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fodo-ben-ni%2Ftenor.mp3?alt=media" },
+      { voice: "Bass", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fodo-ben-ni%2Fbass.mp3?alt=media" },
+      { voice: "All parts", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fodo-ben-ni%2Fall-parts.mp3?alt=media" },
+    ],
     streamingUrl: "https://www.youtube.com/watch?v=cF_tVCQx8SQ",
     appleMusicUrl: "https://music.apple.com/us/album/odo-ben-ni-feat-musikteers-ensemble-gh/1891890637?i=1891890638",
     spotifyUrl: "https://open.spotify.com/track/0ceu7fKz98iuH1n2BFvk5o",
@@ -207,6 +228,13 @@ export const mockPsalms: Psalm[] = [
   {
     id: "psalm-013",
     slug: "onyame-waseda-ni",
+    rehearsalTracks: [
+      { voice: "Soprano", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fonyame-waseda-ni%2Fsoprano.mp3?alt=media" },
+      { voice: "Alto", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fonyame-waseda-ni%2Falto.mp3?alt=media" },
+      { voice: "Tenor", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fonyame-waseda-ni%2Ftenor.mp3?alt=media" },
+      { voice: "Bass", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fonyame-waseda-ni%2Fbass.mp3?alt=media" },
+      { voice: "All parts", url: "https://firebasestorage.googleapis.com/v0/b/psalms-of-nate.firebasestorage.app/o/public%2Frehearsal%2Fonyame-waseda-ni%2Fall-parts.mp3?alt=media" },
+    ],
     title: "Onyame W'aseda Ni",
     subtitle: "Our Thanks Unto the Lord. A Ghanaian Choral Anthem ft. Musikteers Ensemble GH",
     status: "released",
