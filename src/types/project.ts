@@ -4,6 +4,7 @@ export type Project = {
   title: string;
   description: string;
   coverUrl?: string;
+  coverImages?: string[];
   psalmIds: string[];
   releaseDate?: string;
 };

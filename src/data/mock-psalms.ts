@@ -257,6 +257,11 @@ export const mockProjects: Project[] = [
     slug: "ghanaian-choral-worship",
     title: "Ghanaian Choral Worship",
     description: "Original choral works and sacred hymns reimagined through Ghanaian musical language, Scripture, and worship.",
+    coverImages: [
+      "/images/revamp/the-psalms-1.jpg",
+      "/images/revamp/the-psalms-2.jpg",
+      "/images/revamp/the-psalms-3.jpg"
+    ],
     psalmIds: ["psalm-001", "psalm-002", "psalm-003", "psalm-004", "psalm-005", "psalm-006", "psalm-007", "psalm-008", "psalm-009", "psalm-010", "psalm-011", "psalm-012", "psalm-013"],
     releaseDate: "2025-07-04"
   }
