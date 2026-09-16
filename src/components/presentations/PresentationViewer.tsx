@@ -2,13 +2,27 @@ import Link from "next/link";
 import { Download } from "lucide-react";
 import type { Presentation } from "@/types/presentation";
 
+// Browsers can't render .pptx inline, so route Office files through Microsoft's
+// public Office Online viewer; PDFs embed directly; an explicit embedUrl (e.g. a
+// Google Slides "publish to web" URL) always wins.
+function viewerSrc(p: Presentation): string | undefined {
+  if (p.embedUrl) return p.embedUrl;
+  if (!p.fileUrl) return undefined;
+  if (/\.pptx?(?:\?|$)/i.test(p.fileUrl)) {
+    return `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(p.fileUrl)}`;
+  }
+  if (/\.pdf(?:\?|$)/i.test(p.fileUrl)) return p.fileUrl;
+  return undefined;
+}
+
 export function PresentationViewer({ presentation }: Readonly<{ presentation: Presentation }>) {
+  const src = viewerSrc(presentation);
   return (
     <div className="mt-8">
-      {presentation.embedUrl ? (
+      {src ? (
         <div className="aspect-video overflow-hidden rounded-2xl border border-foreground/10 bg-foreground/[0.03] shadow-xl shadow-slate-900/10">
           <iframe
-            src={presentation.embedUrl}
+            src={src}
             title={`${presentation.title} — slides`}
             className="h-full w-full"
             allowFullScreen
