@@ -210,6 +210,8 @@
   .lb-nav-links,.lb-nav-cta{display:none}
   .lb-nav-mobile{display:block}
   .lb-brand-text small{display:none}
+  /* links (the flex:1 spacer) are hidden here, so push the actions to the right edge */
+  .lb-nav-actions{margin-left:auto}
 }
 
 /* ── coverflow catalogue caption + controls ─────────────────── */

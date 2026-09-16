@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 
 export function PresentationCard({ presentation }: Readonly<{ presentation: Presentation }>) {
   return (
-    <Card className="grid gap-5 sm:grid-cols-[88px_1fr]">
+    <Card className="grid grid-cols-[72px_1fr] gap-4 sm:grid-cols-[88px_1fr] sm:gap-5">
       <div className="flex aspect-square items-center justify-center rounded-2xl bg-[hsl(var(--accent))] text-white shadow-lg shadow-orange-900/15">
         <PresentationIcon className="h-8 w-8" />
       </div>
