@@ -65,6 +65,7 @@ export default function AboutPage() {
         <div className="ab-bio-head">
           <p className="ab-eyebrow">The story</p>
           <h2 id="ab-bio-title">A doctor’s hands, <span className="ab-serif">a worshipper’s heart.</span></h2>
+          <Link href="/story" className="ab-textlink" style={{ marginTop: "22px" }}>Read the fuller story <ArrowUpRight size={16} /></Link>
         </div>
         <div className="ab-bio-body">
           <p className="ab-bio-lead">Dr. Nathanael Adjei is a medical doctor, composer and church musician with a passion for using music to proclaim the gospel and strengthen the faith of believers.</p>

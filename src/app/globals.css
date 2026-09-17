@@ -2,6 +2,7 @@
 @import "../styles/choral.css";
 @import "../styles/label.css";
 @import "../styles/about.css";
+@import "../styles/story.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

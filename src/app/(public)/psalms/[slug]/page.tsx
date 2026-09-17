@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowUpRight, BookOpen } from "lucide-react";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/layout/Container";
 import { PsalmDownloads } from "@/components/psalms/PsalmDownloads";
@@ -40,6 +42,10 @@ export default async function PsalmDetailPage({ params }: { params: Promise<{ sl
   const psalm = mockPsalms.find((item) => item.slug === slug);
   if (!psalm) notFound();
 
+  // ponytail: works whose origin is told in /story get a deep link to that section.
+  const storySection: Record<string, string> = { "maseda-ni": "the-first-songs", "madesre-my-plea": "the-first-songs" };
+  const storyHref = storySection[slug];
+
   // ponytail: per-song schema so search/answer engines read composer, date, and files.
   const jsonLd = {
     "@context": "https://schema.org",
@@ -62,6 +68,12 @@ export default async function PsalmDetailPage({ params }: { params: Promise<{ sl
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <PsalmPreview psalm={psalm} />
       <PsalmMetadata psalm={psalm} />
+      {storyHref ? (
+        <Link href={`/story#${storyHref}`} className="mt-6 inline-flex items-center gap-2 border-b border-[#D4AF37] pb-1 text-sm font-medium text-foreground/90 transition-all hover:gap-3">
+          <BookOpen size={16} className="text-[#D4AF37]" /> The story behind this piece
+          <ArrowUpRight size={15} className="text-[#D4AF37]" />
+        </Link>
+      ) : null}
       <PsalmDownloads psalm={psalm} />
       <RehearsalTracks tracks={psalm.rehearsalTracks} />
       <MailingListSignup />

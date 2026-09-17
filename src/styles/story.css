@@ -1,0 +1,43 @@
+/* Psalms of Nate — The Story (light "label" aesthetic, reading layout) */
+.story-page{
+  --bg:#f5f2e8; --bg2:#efece0; --ink:#22392f; --soft:#5f665b; --faint:#8b9083;
+  --gold:#a07d33; --line:#d5d6c7; --green:#183d32;
+  --gut:clamp(20px,5vw,88px);
+  --serif:Georgia,"Times New Roman",serif;
+  background:var(--bg);color:var(--ink);
+  font-family:"Helvetica Neue",Inter,system-ui,-apple-system,sans-serif;overflow:clip;-webkit-font-smoothing:antialiased;
+}
+.story-page h1,.story-page h2{font-weight:600;letter-spacing:-.03em;line-height:1.08;text-wrap:balance;margin:0}
+.story-page .st-serif{font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:-.01em;color:var(--gold)}
+.st-eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 16px}
+.story-page :is(a,button):focus-visible{outline:2px solid var(--gold);outline-offset:4px;border-radius:2px}
+.st-btn{display:inline-flex;align-items:center;gap:11px;padding:14px 22px;background:var(--ink);color:#f5f2e8;font-size:13px;font-weight:600;border-radius:100px;min-height:48px;transition:transform .18s,background .18s}
+.st-btn:hover{background:var(--green);transform:translateY(-1px)}
+.st-textlink{display:inline-flex;align-items:center;gap:9px;color:var(--ink);font-size:13px;font-weight:500;min-height:44px;border-bottom:1px solid var(--gold);width:fit-content;transition:gap .18s}
+.st-textlink:hover{gap:15px}
+
+/* ── HERO ───────────────────────────────────────────── */
+.st-hero{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,6vw,90px);align-items:center;padding:clamp(56px,8vw,110px) var(--gut) clamp(40px,5vw,72px);max-width:1180px;margin-inline:auto}
+.st-hero h1{font-size:clamp(38px,6vw,78px);line-height:1.02;letter-spacing:-.035em}
+.st-sub{font-size:clamp(15px,1.6vw,19px);letter-spacing:.02em;color:var(--soft);margin:22px 0 0;font-family:var(--serif);font-style:italic}
+.st-hero-photo{margin:0;border-radius:18px;overflow:clip;aspect-ratio:4/5;box-shadow:0 40px 90px -50px rgba(24,45,38,.55)}
+.st-hero-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+
+/* ── ESSAY BODY (reading column) ────────────────────── */
+.st-body{max-width:680px;margin-inline:auto;padding:clamp(24px,4vw,48px) var(--gut) clamp(48px,7vw,96px)}
+.st-body p{font-size:clamp(16px,1.5vw,18.5px);line-height:1.85;color:var(--soft);margin:0 0 26px}
+.st-body p em{font-family:var(--serif);font-style:italic;color:var(--ink)}
+.st-lead{font-size:clamp(19px,2vw,23px)!important;line-height:1.65!important;color:var(--ink)!important;margin-bottom:34px!important}
+.st-body h2{font-size:clamp(23px,2.8vw,32px);color:var(--ink);margin:clamp(40px,5vw,60px) 0 20px;scroll-margin-top:96px}
+.st-pull{margin:clamp(28px,4vw,44px) 0;padding:0 0 0 clamp(18px,3vw,28px);border-left:3px solid var(--gold);font-family:var(--serif);font-style:italic;font-size:clamp(22px,3vw,30px);line-height:1.3;color:var(--ink)}
+
+/* ── CTA ────────────────────────────────────────────── */
+.st-cta{text-align:center;padding:clamp(64px,9vw,120px) var(--gut) clamp(84px,11vw,140px);background:var(--bg2);border-top:1px solid var(--line)}
+.st-cta h2{font-size:clamp(28px,4.2vw,54px);line-height:1.1;margin-bottom:28px}
+.st-cta-actions{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap}
+
+/* ── responsive ─────────────────────────────────────── */
+@media(max-width:840px){
+  .st-hero{grid-template-columns:1fr;gap:30px}
+  .st-hero-photo{max-width:400px;order:-1}
+}

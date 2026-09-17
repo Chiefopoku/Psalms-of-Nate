@@ -148,7 +148,7 @@ export function ChoralExperience() {
                 <p className="lb-composer-role">Composer &amp; Physician</p>
               </div>
               <p>Scripture, sacred hymnody and the warmth of Ghanaian choral expression shape the music of Psalms of Nate. Through Akan (Twi) and English, these compositions give voice to prayer, thanksgiving and praise.</p>
-              <Link className="lb-textlink" href="/about">Meet the composer <ArrowUpRight size={16} /></Link>
+              <Link className="lb-textlink" href="/story">Read the fuller story <ArrowUpRight size={16} /></Link>
             </div>
           </div>
         </ContainerScroll>
