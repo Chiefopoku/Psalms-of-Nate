@@ -91,7 +91,7 @@
 .lb-feature-copy .lb-textlink{color:#f5f2e8;border-bottom-color:#e7cf95}
 
 /* ── INTIMACY: the composer (scroll-tilt reveal) ─────────────── */
-.lb-composer{background:var(--lb-bg)}
+.lb-composer{background:var(--lb-bg);scroll-margin-top:84px}
 .lb-composer-head{max-width:60rem;margin-inline:auto;padding-inline:var(--lb-gutter);padding-bottom:clamp(40px,7vw,104px)}
 .lb-composer-head .lb-eyebrow{margin-bottom:16px}
 .lb-composer-head h2{font-size:clamp(30px,4.6vw,60px);line-height:1.1;color:var(--lb-ink)}

@@ -4,7 +4,7 @@ import { Menu, Search } from "lucide-react";
 
 const links = [
   ["The music", "/#compositions"],
-  ["The composer", "/#composer"],
+  ["The composer", "/#inspiration"],
   ["Manuscripts", "/#manuscripts"],
   ["Library", "/library"],
   ["Resources", "/resources"],
