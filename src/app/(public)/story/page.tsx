@@ -32,6 +32,8 @@ export default function StoryPage() {
 
         <p data-reveal>I was born into a home where music never really stopped. My grandfather played the accordion. My mother and every one of her siblings sang. My mother especially &mdash; she moved between Twi anthems and the classical hymn <em>Jesus, Joy of Man&rsquo;s Desiring</em> as easily as breathing, singing whatever the moment called for. She never sat me down to teach me what made a melody beautiful. She simply lived inside beautiful melodies, all day, every day, and I absorbed the ear for it without either of us noticing it was happening. That is, I think, the quietest and most important inheritance a parent can give a child.</p>
 
+        <p data-reveal>My father gave me something more deliberate. Returning home from peacekeeping duty in Lebanon, he brought back a Casio keyboard for me. It wasn&rsquo;t a grand gesture explained with words &mdash; he simply put an instrument in my hands. Looking back now, I recognize it for what it was: my loved ones giving me, without ever calling it that, the gift of music itself.</p>
+
         <figure className="st-figure st-figure-wide" data-reveal>
           <img src="/images/revamp/nate-conducting.jpg" alt="Dr. Nathanael Adjei conducting the Phoenix Ghanaian SDA Church choir" width="1600" height="1000" loading="lazy" />
           <figcaption>Conducting the Phoenix Ghanaian SDA Church choir</figcaption>
