@@ -34,6 +34,14 @@ const photos: Photo[] = [
   { src: "/images/revamp/nate-about-hero.jpg", alt: "Dr. Nathanael Adjei", w: 1000, h: 1500 },
 ];
 
+// Hand-authored desktop columns (indices into `photos`, top to bottom).
+// Balanced by height; col 0 leads with the piano-profile, then the white-piano.
+const wallColumns = [
+  [3, 0, 4, 7, 10, 12, 15],
+  [1, 6, 9, 11, 14, 17],
+  [2, 5, 8, 13, 16],
+];
+
 export default function GalleryPage() {
   return (
     <div className="gallery-page">
@@ -62,7 +70,7 @@ export default function GalleryPage() {
           <h2 className="text-2xl font-semibold tracking-tight text-stone-900">All photographs</h2>
           <Link href="/about" className="ab-textlink text-sm">Back to About <ArrowUpRight size={15} /></Link>
         </div>
-        <PhotoWall images={photos} />
+        <PhotoWall images={photos} columns={wallColumns} />
       </section>
     </div>
   );

@@ -9,45 +9,42 @@ export interface Photo {
   h: number;
 }
 
-// ponytail: matchMedia beats a resize listener + width math — 3 cols on md+, 2 below.
-function useColumnCount() {
-  const [cols, setCols] = useState(3);
+// ponytail: matchMedia beats a resize listener + width math.
+function useIsDesktop() {
+  const [desktop, setDesktop] = useState(true);
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 768px)");
-    const update = () => setCols(mq.matches ? 3 : 2);
+    const update = () => setDesktop(mq.matches);
     update();
     mq.addEventListener("change", update);
     return () => mq.removeEventListener("change", update);
   }, []);
-  return cols;
+  return desktop;
 }
 
 // Adapted from the 21st.dev scroll-trigger parallax — repointed to framer-motion
 // (already installed) and Lenis dropped so we don't hijack scroll site-wide.
-export function PhotoWall({ images }: { images: Photo[] }) {
-  const cols = useColumnCount();
+//
+// `columns` is the hand-authored desktop layout: each inner array lists indices
+// into `images` for that column, top to bottom. On mobile we ignore it and lay
+// the photos out in two round-robin columns instead.
+export function PhotoWall({ images, columns }: { images: Photo[]; columns: number[][] }) {
+  const isDesktop = useIsDesktop();
   const wallRef = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState<number | null>(null);
 
   const { scrollYProgress } = useScroll({ target: wallRef, offset: ["start end", "end start"] });
-  // Neighbouring columns drift in opposite directions → parallax. Hooks stay
-  // unconditional (always 3) even when only 2 columns render.
-  const y0 = useTransform(scrollYProgress, [0, 1], [46, -46]);
-  const y1 = useTransform(scrollYProgress, [0, 1], [-38, 38]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [28, -28]);
+  // Gentle parallax — neighbouring columns drift in opposite directions. Kept
+  // small so column tops stay aligned and no photo looks clipped. Hooks stay
+  // unconditional (always 3) even when only 2 columns render on mobile.
+  const y0 = useTransform(scrollYProgress, [0, 1], [22, -22]);
+  const y1 = useTransform(scrollYProgress, [0, 1], [-16, 16]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [18, -18]);
   const colY = [y0, y1, y2];
 
-  // Greedy bin-pack: drop each photo into the currently shortest column (height
-  // ∝ h/w at equal width). Keeps the columns ending roughly level so parallax
-  // never opens a big empty gap. Each photo keeps its global index for the lightbox.
-  const columns: { photo: Photo; index: number }[][] = Array.from({ length: cols }, () => []);
-  const heights = new Array(cols).fill(0);
-  images.forEach((photo, index) => {
-    let shortest = 0;
-    for (let i = 1; i < cols; i++) if (heights[i] < heights[shortest]) shortest = i;
-    columns[shortest].push({ photo, index });
-    heights[shortest] += photo.h / photo.w;
-  });
+  const mobileColumns: number[][] = [[], []];
+  images.forEach((_, i) => mobileColumns[i % 2].push(i));
+  const layout = isDesktop ? columns : mobileColumns;
 
   const close = () => setSelected(null);
   const step = (e: React.MouseEvent, delta: number) => {
@@ -57,35 +54,34 @@ export function PhotoWall({ images }: { images: Photo[] }) {
 
   return (
     <>
-      <div ref={wallRef} className="flex gap-3 sm:gap-4">
-        {columns.map((column, ci) => (
-          <motion.div
-            key={ci}
-            style={{ y: colY[ci] }}
-            className={`flex-1 flex flex-col gap-3 sm:gap-4 ${ci === 1 ? "mt-6 sm:mt-10" : ""}`}
-          >
-            {column.map(({ photo, index }, order) => (
-              <motion.button
-                key={photo.src}
-                type="button"
-                initial={{ opacity: 0, y: 28 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.55, delay: (order % 4) * 0.05, ease: [0.22, 1, 0.36, 1] }}
-                className="group block w-full overflow-hidden rounded-lg cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
-                onClick={() => setSelected(index)}
-                aria-label={photo.alt ?? `Open photo ${index + 1}`}
-              >
-                <img
-                  src={photo.src}
-                  alt={photo.alt ?? `Photo ${index + 1}`}
-                  width={photo.w}
-                  height={photo.h}
-                  loading="lazy"
-                  className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                />
-              </motion.button>
-            ))}
+      <div ref={wallRef} className="flex items-start gap-3 sm:gap-4">
+        {layout.map((colIndices, ci) => (
+          <motion.div key={ci} style={{ y: colY[ci] }} className="flex-1 flex flex-col gap-3 sm:gap-4">
+            {colIndices.map((index, order) => {
+              const photo = images[index];
+              return (
+                <motion.button
+                  key={photo.src}
+                  type="button"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.55, delay: (order % 4) * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                  className="group block w-full overflow-hidden rounded-lg cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+                  onClick={() => setSelected(index)}
+                  aria-label={photo.alt ?? `Open photo ${index + 1}`}
+                >
+                  <img
+                    src={photo.src}
+                    alt={photo.alt ?? `Photo ${index + 1}`}
+                    width={photo.w}
+                    height={photo.h}
+                    loading="lazy"
+                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
+                </motion.button>
+              );
+            })}
           </motion.div>
         ))}
       </div>
