@@ -8,6 +8,7 @@ const links = [
   ["Manuscripts", "/#manuscripts"],
   ["Library", "/library"],
   ["Resources", "/resources"],
+  ["Gallery", "/gallery"],
   ["About", "/about"],
 ];
 

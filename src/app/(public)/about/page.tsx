@@ -78,6 +78,7 @@ export default function AboutPage() {
       {/* ── GALLERY ──────────────────────────────────────── */}
       <section className="ab-gallery" aria-label="Gallery">
         <ExpandableGallery images={gallery} />
+        <Link href="/gallery" className="ab-textlink" style={{ marginTop: "22px" }}>See all photos <ArrowUpRight size={16} /></Link>
       </section>
 
       {/* ── SELECTED WORKS ───────────────────────────────── */}
