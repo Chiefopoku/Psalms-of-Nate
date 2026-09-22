@@ -55,29 +55,47 @@ export default function ContactPage() {
       <section id="permissions" className="scroll-mt-24 border-t border-border bg-foreground/[0.03]">
         <Container className="py-12 sm:py-16">
           <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-[hsl(var(--accent))]">Scores &amp; permissions</p>
-          <h2 className="max-w-3xl text-3xl font-semibold text-foreground sm:text-4xl">Using the music — permissions &amp; copyright</h2>
+          <h2 className="max-w-3xl text-3xl font-semibold text-foreground sm:text-4xl">Using this music</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-foreground/70">Psalms of Nate music is written for the church, and it is meant to be sung.</p>
+
           <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <div>
-              <h3 className="font-semibold text-foreground">Requesting scores</h3>
-              <p className="mt-2 text-sm leading-7 text-foreground/70">
-                Choir directors and musicians can request full scores and parts for any Psalms of Nate work by email. Please include the title and your choir or church.
+              <h3 className="font-semibold text-foreground">Free to use — no permission needed</h3>
+              <ul className="mt-2 list-disc space-y-1 pl-4 text-sm leading-7 text-foreground/70">
+                <li>Perform any work — in worship, at a concert, at a convention, in a competition</li>
+                <li>Print or photocopy as many scores as your singers, instrumentalists, and accompanist need</li>
+                <li>Record your performance and share it — YouTube, Facebook, WhatsApp, your church&apos;s channel</li>
+                <li>Project the text for the congregation</li>
+              </ul>
+              <p className="mt-3 text-sm leading-7 text-foreground/70">
+                All I ask: credit the composer (&ldquo;Music by Nathanael Adjei — Psalms of Nate&rdquo;) in your programme, video description, or announcement. Don&apos;t sell copies of the score. Don&apos;t arrange for publication or resell a modified version.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-foreground">Performing &amp; recording</h3>
+              <h3 className="font-semibold text-foreground">Tell me when you sing one</h3>
               <p className="mt-2 text-sm leading-7 text-foreground/70">
-                You are free to perform Psalms of Nate works in worship — no permission needed. We only ask that you request written permission for recordings, broadcasts, or any commercial use.
+                Not a requirement — an invitation. I keep a record of every performance of these works and would genuinely love to know. Video is welcome but entirely optional.
               </p>
+              <a href={`mailto:${EMAIL}?subject=${encodeURIComponent("We performed a Psalms of Nate work")}`} className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[hsl(var(--primary))] underline underline-offset-4">
+                Tell me about your performance <ArrowUpRight size={14} />
+              </a>
             </div>
             <div>
-              <h3 className="font-semibold text-foreground">Copyright</h3>
-              <p className="mt-2 text-sm leading-7 text-foreground/70">
-                All compositions, arrangements, lyrics, and scores are © Nathanael Adjei / Psalms of Nate. They may not be copied, arranged, republished, or sold without permission. Reproducing scores for your singers requires a licence.
-              </p>
+              <h3 className="font-semibold text-foreground">Write to me first for</h3>
+              <ul className="mt-2 list-disc space-y-1 pl-4 text-sm leading-7 text-foreground/70">
+                <li>A commercial recording — Spotify, Apple Music, CD, paid download</li>
+                <li>Arranging, re-orchestrating, or translating the work</li>
+                <li>Publishing the score in a hymnal, collection, or anthology</li>
+                <li>Film, television, or advertising</li>
+              </ul>
             </div>
           </div>
-          <a href={`mailto:${EMAIL}?subject=${encodeURIComponent("Scores & permissions enquiry")}`} className="mt-10 inline-flex items-center gap-2 rounded-full bg-[hsl(var(--foreground))] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 transition hover:-translate-y-0.5 hover:bg-[hsl(var(--primary))]">
-            <Mail size={16} /> Request permission
+
+          <p className="mt-10 max-w-2xl text-xs leading-6 text-foreground/60">
+            © Nathanael Adjei / Psalms of Nate. Permission granted above; all other rights reserved. These are the current terms for scores on this site — any future change applies only to newly published works, not to scores you&apos;ve already downloaded.
+          </p>
+          <a href={`mailto:${EMAIL}?subject=${encodeURIComponent("Scores & permissions enquiry")}`} className="mt-4 inline-flex items-center gap-2 rounded-full bg-[hsl(var(--foreground))] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 transition hover:-translate-y-0.5 hover:bg-[hsl(var(--primary))]">
+            <Mail size={16} /> Ask about a licence
           </a>
         </Container>
       </section>
